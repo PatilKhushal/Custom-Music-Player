@@ -78,7 +78,7 @@ function g() {
   l.play(),
     (document.getElementById("cover").style.animationPlayState = "running"),
     i.classList.replace("pause", "play"),
-    (i.src = "./assets/play-solid.svg"),
+    (i.src = "./play-solid.svg"),
     l.addEventListener("timeupdate", M),
     (b.innerHTML = a[c].name),
     (l.volume = h.value / 100),
@@ -120,13 +120,13 @@ i.addEventListener("click", () => {
     ? i.classList.contains("pause")
       ? (i.classList.replace("pause", "play"),
         (i.parentElement.title = "Pause"),
-        (i.src = "./assets/play-solid.svg"),
+        (i.src = "./play-solid.svg"),
         l.play(),
         y(!0),
         (document.getElementById("cover").style.animationPlayState = "running"))
       : (i.classList.replace("play", "pause"),
         (i.parentElement.title = "Play"),
-        (i.src = "./assets/pause-solid.svg"),
+        (i.src = "./pause-solid.svg"),
         l.pause(),
         y(!1),
         (document.getElementById("cover").style.animationPlayState = "paused"))
@@ -157,8 +157,8 @@ E.addEventListener("click", () => {
 h.addEventListener("input", (t) => {
   l && (l.volume = t.target.value / 100),
     t.target.value == 0
-      ? (f.src = "./assets/volume-xmark-solid.svg")
+      ? (f.src = "./volume-xmark-solid.svg")
       : t.target.value > 0 && t.target.value < 50
-      ? (f.src = "./assets/volume-low-solid.svg")
-      : (f.src = "./assets/volume-high-solid.svg");
+      ? (f.src = "./volume-low-solid.svg")
+      : (f.src = "./volume-high-solid.svg");
 });
