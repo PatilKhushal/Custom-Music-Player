@@ -472,7 +472,7 @@ video {
 }
 
 .bg-\[url\(\.\.\/images\/bg\.jpg\)\] {
-    background-image: url(./assets/bg-QT28p_p0.jpg)
+    background-image: url(./bg-QT28p_p0.jpg)
 }
 
 .bg-cover {
