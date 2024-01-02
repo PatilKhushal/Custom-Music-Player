@@ -5,8 +5,8 @@
   new MutationObserver((n) => {
     for (const o of n)
       if (o.type === "childList")
-        for (const d of o.addedNodes)
-          d.tagName === "LINK" && d.rel === "modulepreload" && s(d);
+        for (const m of o.addedNodes)
+          m.tagName === "LINK" && m.rel === "modulepreload" && s(m);
   }).observe(document, { childList: !0, subtree: !0 });
   function r(n) {
     const o = {};
@@ -28,9 +28,9 @@
     fetch(n.href, o);
   }
 })();
-let m = document.getElementById("MP3"),
+let d = document.getElementById("MP3"),
   E = document.body.querySelectorAll(".controls img")[0],
-  i = document.body.querySelectorAll(".controls img")[1],
+  a = document.body.querySelectorAll(".controls img")[1],
   p = document.body.querySelectorAll(".controls img")[2],
   u = document.body.querySelectorAll("input[type=range]")[0],
   h = document.body.querySelectorAll("input[type=range]")[1],
@@ -39,7 +39,7 @@ let m = document.getElementById("MP3"),
   S = document.body.querySelector(".currenttime"),
   b = document.getElementById("currentSongName"),
   v = document.body.querySelectorAll(".borAni"),
-  a = new Array(),
+  i = new Array(),
   l,
   c = 0;
 function y(t) {
@@ -77,10 +77,10 @@ function M() {
 function g() {
   l.play(),
     (document.getElementById("cover").style.animationPlayState = "running"),
-    i.classList.replace("pause", "play"),
-    (i.src = "./assets/play-solid.svg"),
+    a.classList.replace("pause", "play"),
+    (a.src = "./assets/play-solid.svg"),
     l.addEventListener("timeupdate", M),
-    (b.innerHTML = a[c].name),
+    (b.innerHTML = i[c].name),
     (l.volume = h.value / 100),
     y(!0),
     setTimeout(() => {
@@ -104,55 +104,55 @@ function g() {
       L.innerHTML = t;
     }, 500);
 }
-m.addEventListener("change", () => {
-  Array.from(m.files).forEach((t) => {
+d.addEventListener("change", () => {
+  Array.from(d.files).forEach((t) => {
     let e = new Audio(URL.createObjectURL(t)),
       r = t.name;
-    a.push({ audioElement: e, name: r });
+    i.push({ audioElement: e, name: r });
   }),
-    console.log(a),
-    (l = a[0].audioElement),
+    console.log(i),
+    (l = i[0].audioElement),
     g(),
-    (i.parentElement.title = "Pause");
+    (a.parentElement.title = "Pause");
 });
-i.addEventListener("click", () => {
-  a.length
-    ? i.classList.contains("pause")
-      ? (i.classList.replace("pause", "play"),
-        (i.parentElement.title = "Pause"),
-        (i.src = "./assets/play-solid.svg"),
+a.addEventListener("click", () => {
+  i.length
+    ? a.classList.contains("pause")
+      ? (a.classList.replace("pause", "play"),
+        (a.parentElement.title = "Pause"),
+        (a.src = "./assets/play-solid.svg"),
         l.play(),
         y(!0),
         (document.getElementById("cover").style.animationPlayState = "running"))
-      : (i.classList.replace("play", "pause"),
-        (i.parentElement.title = "Play"),
-        (i.src = "./assets/pause-solid.svg"),
+      : (a.classList.replace("play", "pause"),
+        (a.parentElement.title = "Play"),
+        (a.src = "./assets/pause-solid.svg"),
         l.pause(),
         y(!1),
         (document.getElementById("cover").style.animationPlayState = "paused"))
-    : m.click();
+    : d.click();
 });
 u.addEventListener("input", () => {
   l && (l.currentTime = (u.value * l.duration) / 100),
     u.value == 100 && p.click();
 });
 p.addEventListener("click", () => {
-  a.length
+  i.length
     ? ((l.currentTime = 0),
       l.pause(),
-      (c = ++c % a.length),
-      (l = a[c].audioElement),
+      (c = ++c % i.length),
+      (l = i[c].audioElement),
       g())
-    : m.click();
+    : d.click();
 });
 E.addEventListener("click", () => {
-  a.length
+  i.length
     ? ((l.currentTime = 0),
       l.pause(),
-      --c == -1 && (c = a.length - 1),
-      (l = a[c].audioElement),
+      --c == -1 && (c = i.length - 1),
+      (l = i[c].audioElement),
       g())
-    : m.click();
+    : d.click();
 });
 h.addEventListener("input", (t) => {
   l && (l.volume = t.target.value / 100),
